@@ -491,6 +491,58 @@ banding 8,1 → tukar → [3, 5, 1, 8]   ← hasil pass 1</pre>
 </table>
 <p><b>Fungsi sistem operasi:</b> mengelola sumber daya (CPU, memori, file, perangkat I/O), menyediakan antarmuka pengguna (GUI/CLI), mengatur keamanan dan akun pengguna, serta menjalankan aplikasi.</p>
 <p><b>Booting</b>: proses menyalakan komputer sampai OS siap. Urutannya: listrik masuk → BIOS/UEFI menjalankan <b>POST</b> (Power-On Self Test) untuk memeriksa hardware → <i>bootloader</i> memuat OS ke RAM.</p>
+<ul>
+  <li><b>Cold boot</b>: menyalakan komputer dari keadaan mati total.</li>
+  <li><b>Warm boot</b>: menyalakan ulang (restart) komputer yang sedang menyala.</li>
+</ul>
+<p><b>Antarmuka pengguna:</b> <b>GUI</b> (Graphical User Interface: ikon, jendela, mouse), <b>CLI</b> (Command Line Interface: mengetik perintah, misalnya Command Prompt atau Terminal), dan antarmuka sentuh/suara.</p>
+<p><b>Multitasking</b>: OS membagi waktu CPU sehingga beberapa program tampak berjalan bersamaan. Jika RAM penuh, OS memakai sebagian penyimpanan sebagai <b>virtual memory</b>, sehingga komputer terasa lambat.</p>
+
+<h3>Klasifikasi Komputer</h3>
+<table>
+<tr><th>Dasar</th><th>Jenis</th></tr>
+<tr><td>Data yang diolah</td><td><b>Analog</b> (data kontinu, misalnya termometer air raksa), <b>Digital</b> (data diskret 0/1), <b>Hybrid</b> (gabungan; misalnya alat medis EKG)</td></tr>
+<tr><td>Ukuran/kemampuan</td><td><b>Superkomputer</b> (prakiraan cuaca, riset), <b>Mainframe</b> (bank, maskapai), <b>Server/minikomputer</b>, <b>Mikrokomputer</b> (PC, laptop, tablet), <b>Embedded system</b> (komputer tertanam di mesin cuci, ATM, mobil)</td></tr>
+<tr><td>Tujuan</td><td><b>Special purpose</b> (khusus satu tugas, misalnya mesin ATM) dan <b>General purpose</b> (serbaguna, misalnya laptop)</td></tr>
+</table>
+
+<h3>Port dan Konektor</h3>
+<table>
+<tr><th>Port</th><th>Fungsi</th></tr>
+<tr><td><b>USB</b> (Universal Serial Bus)</td><td>Port serbaguna: flashdisk, mouse, keyboard, printer. <b>USB Type-C</b> berbentuk oval dan bisa dicolok bolak-balik.</td></tr>
+<tr><td><b>HDMI</b></td><td>Mengirim <b>video dan audio digital</b> sekaligus ke monitor/TV/proyektor</td></tr>
+<tr><td><b>VGA</b> (D-Sub 15 pin)</td><td>Mengirim <b>video analog</b> (tanpa audio); umum pada proyektor lama</td></tr>
+<tr><td><b>DisplayPort</b></td><td>Video dan audio digital, umum pada monitor PC</td></tr>
+<tr><td><b>RJ-45</b></td><td>Konektor kabel jaringan (LAN/UTP)</td></tr>
+<tr><td><b>RJ-11</b></td><td>Konektor kabel telepon</td></tr>
+<tr><td><b>Audio jack 3,5 mm</b></td><td>Headset, speaker, mikrofon</td></tr>
+</table>
+
+<h3>Perangkat Output: Monitor dan Printer</h3>
+<ul>
+  <li><b>Resolusi</b> layar = banyak piksel lebar × tinggi. Full HD = <b>1920 × 1080</b>, HD = 1280 × 720, 4K UHD = 3840 × 2160.</li>
+  <li><b>Refresh rate</b> (Hz): berapa kali layar diperbarui per detik. 60 Hz biasa, 120–144 Hz lebih halus untuk gim.</li>
+  <li>Teknologi layar: CRT (tabung, lama), LCD, LED (LCD dengan lampu latar LED), <b>OLED</b> (setiap piksel memancarkan cahaya sendiri, hitam pekat).</li>
+  <li><b>Printer inkjet</b>: menyemprot <b>tinta cair</b>; bagus untuk foto berwarna.</li>
+  <li><b>Printer laser</b>: memakai <b>toner</b> (bubuk) dan sinar laser; cepat untuk dokumen banyak.</li>
+  <li><b>Printer dot matrix</b>: printer <b>impact</b> (menekan pita); bisa mencetak rangkap/karbon, misalnya nota.</li>
+  <li><b>Printer 3D</b>: membuat benda tiga dimensi lapis demi lapis.</li>
+  <li>Kualitas cetak/scan diukur dalam <b>dpi</b> (dots per inch).</li>
+</ul>
+
+<h3>Membaca Spesifikasi Laptop</h3>
+<pre class="code">Prosesor : Intel Core i5, 4 core, 2,4 GHz
+RAM      : 8 GB DDR4
+Storage  : SSD 512 GB
+Layar    : 14 inci, Full HD (1920×1080)
+OS       : Windows 11</pre>
+<ul>
+  <li><b>Core</b> dan <b>GHz</b> menunjukkan kemampuan CPU.</li>
+  <li><b>RAM</b> menentukan banyaknya program yang lancar dibuka bersamaan.</li>
+  <li><b>SSD 512 GB</b> adalah kapasitas penyimpanan file permanen.</li>
+  <li><b>14 inci</b> adalah ukuran <b>diagonal</b> layar.</li>
+</ul>
+<div class="jebakan"><b>⚠️ Jebakan soal</b> RAM dan penyimpanan (SSD/HDD) sama-sama diukur dalam GB, tetapi fungsinya berbeda. RAM = memori kerja sementara; SSD = tempat menyimpan file secara permanen.</div>
 `
     },
     // ---------------------------------------------------------------
@@ -579,6 +631,47 @@ banding 8,1 → tukar → [3, 5, 1, 8]   ← hasil pass 1</pre>
   <li><b>Cloud computing</b>: memakai sumber daya komputasi lewat internet (Google Drive, Gmail).</li>
   <li><b>IoT</b>: perangkat sehari-hari yang terhubung ke internet (lampu pintar, CCTV daring).</li>
 </ul>
+
+<h3>Bagaimana Data Berjalan di Internet?</h3>
+<p>Data dipecah menjadi potongan kecil bernama <b>paket</b> (<i>packet switching</i>). Setiap paket berisi alamat IP asal dan tujuan. Paket bisa melewati rute berbeda, lalu disusun ulang di tujuan. Jika ada paket hilang, TCP memintanya dikirim ulang.</p>
+<p>Contoh urutan saat membuka <code>www.contoh.sch.id</code>:</p>
+<ol>
+  <li>Perangkat mendapat alamat IP dari router melalui <b>DHCP</b>.</li>
+  <li>Peramban bertanya ke <b>DNS</b>: berapa alamat IP domain itu?</li>
+  <li>Peramban mengirim permintaan <b>HTTP/HTTPS</b> ke alamat IP server.</li>
+  <li>Data halaman dikirim balik dalam bentuk paket-paket, lalu ditampilkan.</li>
+</ol>
+
+<h3>Teknologi Nirkabel</h3>
+<table>
+<tr><th>Teknologi</th><th>Keterangan</th></tr>
+<tr><td><b>Wi-Fi 2,4 GHz</b></td><td>Jangkauan lebih jauh dan lebih tembus dinding, tetapi lebih lambat dan rawan gangguan</td></tr>
+<tr><td><b>Wi-Fi 5 GHz</b></td><td>Lebih cepat, tetapi jangkauannya lebih pendek</td></tr>
+<tr><td><b>Bluetooth</b></td><td>Jarak dekat (±10 m), hemat daya; earbuds, speaker</td></tr>
+<tr><td><b>NFC</b></td><td>Jarak sangat dekat (beberapa cm); tap kartu e-money, pembayaran</td></tr>
+<tr><td><b>Inframerah</b></td><td>Harus segaris lurus (line of sight); remote TV</td></tr>
+<tr><td><b>Hotspot/tethering</b></td><td>Ponsel membagikan koneksi datanya ke perangkat lain</td></tr>
+</table>
+
+<h3>Generasi Jaringan Seluler</h3>
+<table>
+<tr><th>Generasi</th><th>Ciri utama</th></tr>
+<tr><td><b>1G</b></td><td>Analog, hanya panggilan suara</td></tr>
+<tr><td><b>2G</b> (GSM)</td><td>Digital, mulai ada <b>SMS</b></td></tr>
+<tr><td><b>3G</b></td><td>Internet seluler dan panggilan video</td></tr>
+<tr><td><b>4G</b> (LTE)</td><td>Internet pita lebar: streaming HD, video call lancar</td></tr>
+<tr><td><b>5G</b></td><td>Sangat cepat, <b>latensi sangat rendah</b>, mendukung banyak perangkat IoT</td></tr>
+</table>
+
+<h3>Perintah Jaringan (Command Prompt / Terminal)</h3>
+<table>
+<tr><th>Perintah</th><th>Fungsi</th></tr>
+<tr><td><code>ping</code></td><td>Mengecek apakah perangkat tujuan bisa dijangkau dan berapa waktu responsnya</td></tr>
+<tr><td><code>ipconfig</code> (Windows) / <code>ip a</code> (Linux)</td><td>Melihat alamat IP, subnet mask, dan gateway perangkat sendiri</td></tr>
+<tr><td><code>tracert</code> / <code>traceroute</code></td><td>Melihat rute (router yang dilewati) menuju tujuan</td></tr>
+<tr><td><code>nslookup</code></td><td>Menanyakan alamat IP suatu domain ke DNS</td></tr>
+</table>
+<p><b>Default gateway</b> adalah alamat router yang menjadi "pintu keluar" dari jaringan lokal menuju jaringan lain/internet.</p>
 `
     },
     // ---------------------------------------------------------------
@@ -645,6 +738,26 @@ banding 8,1 → tukar → [3, 5, 1, 8]   ← hasil pass 1</pre>
   <li><b>Asimetris</b>: sepasang kunci, yaitu <b>kunci publik</b> untuk mengenkripsi dan <b>kunci privat</b> untuk mendekripsi (contoh RSA, dipakai pada HTTPS).</li>
   <li><b>Caesar cipher</b>: setiap huruf digeser <i>k</i> posisi. Geser 3: ABC → DEF, ZOO → CRR.</li>
   <li><b>Hashing</b>: mengubah data menjadi kode unik satu arah (dipakai untuk menyimpan password dan mengecek integritas file).</li>
+</ul>
+
+<h3>Mengapa Password Panjang Lebih Aman? (Hitungan)</h3>
+<p>Banyak kemungkinan kombinasi = <b>(banyak jenis karakter)<sup>panjang</sup></b>.</p>
+<ul>
+  <li>PIN 4 digit: 10⁴ = <b>10.000</b> kemungkinan.</li>
+  <li>PIN 6 digit: 10⁶ = <b>1.000.000</b> kemungkinan.</li>
+  <li>3 huruf kecil: 26³ = <b>17.576</b> kemungkinan.</li>
+  <li>Menambah panjang jauh lebih efektif daripada sekadar mengganti huruf menjadi angka.</li>
+</ul>
+
+<h3>Istilah Keamanan Lain</h3>
+<ul>
+  <li><b>White hat hacker</b>: peretas etis yang menguji keamanan dengan izin. <b>Black hat</b>: peretas jahat. <b>Grey hat</b>: di antara keduanya (tanpa izin, tetapi tidak merusak).</li>
+  <li><b>Enkripsi end-to-end</b>: pesan hanya dapat dibaca pengirim dan penerima; server penyedia layanan tidak dapat membacanya.</li>
+  <li><b>CAPTCHA</b>: tes untuk membedakan manusia dan bot (misalnya memilih gambar lampu lalu lintas).</li>
+  <li><b>Cookies</b>: file kecil dari situs web yang disimpan peramban untuk mengingat login atau preferensi.</li>
+  <li><b>Patch</b>: pembaruan kecil untuk menambal celah. <b>Zero-day</b>: celah yang belum diketahui/ditambal pembuat software.</li>
+  <li><b>Sandboxing</b>: menjalankan program di lingkungan terisolasi agar tidak merusak sistem.</li>
+  <li><b>Data breach</b>: kebocoran data dari sebuah layanan; segera ganti password akun terkait.</li>
 </ul>
 
 <h3>Perlindungan</h3>
@@ -720,7 +833,30 @@ banding 8,1 → tukar → [3, 5, 1, 8]   ← hasil pass 1</pre>
 <tr><td>Tim Berners-Lee</td><td>World Wide Web</td></tr>
 <tr><td>Vint Cerf & Bob Kahn</td><td>TCP/IP</td></tr>
 <tr><td>Linus Torvalds</td><td>Kernel Linux (1991)</td></tr>
+<tr><td>Konrad Zuse</td><td>Z3 (1941), komputer terprogram pertama yang berfungsi</td></tr>
+<tr><td>Douglas Engelbart</td><td>Penemu <b>mouse</b> (didemonstrasikan 1968)</td></tr>
+<tr><td>Bill Gates & Paul Allen</td><td>Mendirikan <b>Microsoft</b> (1975)</td></tr>
+<tr><td>Steve Jobs & Steve Wozniak</td><td>Mendirikan <b>Apple</b> (1976)</td></tr>
+<tr><td>Larry Page & Sergey Brin</td><td>Mendirikan <b>Google</b> (1998)</td></tr>
+<tr><td>Mark Zuckerberg</td><td>Mendirikan <b>Facebook</b> (2004)</td></tr>
 </table>
+
+<h3>Tonggak Penting Lain</h3>
+<div class="timeline">
+<div><b>1854</b> George Boole menerbitkan dasar <b>aljabar Boolean</b>.</div>
+<div><b>1941</b> <b>Z3</b> karya Konrad Zuse di Jerman.</div>
+<div><b>1943–1944</b> <b>Colossus</b> di Inggris dipakai untuk memecahkan sandi Jerman.</div>
+<div><b>1945</b> John von Neumann menulis rancangan komputer program tersimpan (EDVAC).</div>
+<div><b>1947</b> Grace Hopper dan timnya menemukan ngengat di komputer Mark II, yang dicatat sebagai "bug" pertama.</div>
+<div><b>1951</b> <b>UNIVAC I</b>, salah satu komputer komersial pertama di AS.</div>
+<div><b>1981</b> <b>IBM PC</b> memopulerkan komputer pribadi di kantor.</div>
+<div><b>1984</b> <b>Apple Macintosh</b> memopulerkan GUI dan mouse.</div>
+<div><b>1985</b> <b>Windows 1.0</b> dirilis Microsoft.</div>
+<div><b>1991</b> <b>Linux</b> dirilis Linus Torvalds; situs web pertama aktif.</div>
+<div><b>2001</b> <b>Wikipedia</b> diluncurkan.</div>
+<div><b>2008</b> Ponsel Android pertama dirilis.</div>
+</div>
+<div class="tips"><b>💡 Tips menghafal generasi komputer</b> "<b>Ta-Tra-I-Mi-A</b>": <b>Ta</b>bung vakum → <b>Tra</b>nsistor → <b>I</b>C → <b>Mi</b>kroprosesor → <b>A</b>I.</div>
 `
     },
     // ---------------------------------------------------------------
@@ -803,12 +939,214 @@ banding 8,1 → tukar → [3, 5, 1, 8]   ← hasil pass 1</pre>
 <p><b>Contoh data pribadi:</b> nama lengkap bersama NIK, alamat rumah, nomor HP, tanggal lahir, foto wajah, data kesehatan, dan data biometrik.</p>
 <p><b>Contoh pelanggaran:</b> masuk ke akun teman tanpa izin (meski tahu password-nya), menyebar foto orang tanpa izin, membuat akun palsu, dan menyebar hoaks.</p>
 
+<h3>Masa Berlaku Hak Cipta</h3>
+<p>Menurut UU No. 28 Tahun 2014, hak cipta atas karya seperti buku, lagu, dan lukisan umumnya berlaku <b>seumur hidup pencipta ditambah 70 tahun</b> setelah ia meninggal. Hak cipta <b>program komputer</b> berlaku <b>50 tahun</b> sejak pertama kali dipublikasikan.</p>
+<p>Mengutip sebagian karya untuk pendidikan atau ulasan diperbolehkan, asalkan <b>sumbernya disebutkan</b> dan tidak merugikan kepentingan wajar pencipta.</p>
+
+<h3>Ujaran Kebencian dan Konten Negatif</h3>
+<ul>
+  <li><b>Ujaran kebencian</b>: konten yang menghasut kebencian berdasarkan <b>SARA</b> (suku, agama, ras, dan antargolongan). Dilarang dalam UU ITE.</li>
+  <li><b>Trolling</b>: sengaja memancing emosi atau keributan di kolom komentar.</li>
+  <li><b>Flaming</b>: adu argumen kasar dan penuh amarah secara daring.</li>
+  <li><b>Clickbait</b>: judul menipu agar orang mengeklik.</li>
+  <li>Sikap yang tepat: jangan ikut menyebarkan, laporkan ke platform, dan jaga komentar tetap santun.</li>
+</ul>
+
+<h3>Penipuan Daring dan Keamanan Diri</h3>
+<ul>
+  <li>Modus umum: hadiah/undian palsu, "salah transfer", akun palsu yang meminjam uang, lowongan kerja palsu, dan file <b>.apk</b> berkedok undangan atau resi paket.</li>
+  <li><b>Akun palsu (fake account/catfishing)</b>: orang yang menyamar menjadi orang lain. Jangan membagikan foto pribadi, alamat, atau data keluarga kepada kenalan daring.</li>
+  <li>Jangan pernah menemui orang yang hanya dikenal lewat internet tanpa sepengetahuan dan pendampingan orang tua.</li>
+  <li>Jika merasa terancam atau dipaksa, hentikan percakapan, simpan bukti, dan ceritakan kepada orang tua atau guru.</li>
+</ul>
+
+<h3>Etika Menggunakan Kecerdasan Artifisial (AI)</h3>
+<ul>
+  <li>Hasil AI bisa salah ("halusinasi"), sehingga harus <b>diperiksa ulang</b> dengan sumber tepercaya.</li>
+  <li>Bersikap jujur: ikuti aturan guru dan <b>nyatakan</b> jika memakai AI dalam tugas.</li>
+  <li>Jangan memasukkan data pribadi atau rahasia ke layanan AI.</li>
+  <li><b>Deepfake</b>: video/audio/foto palsu buatan AI yang meniru wajah atau suara seseorang. Membuat dan menyebarkannya untuk menipu atau mempermalukan orang lain adalah pelanggaran etika dan hukum.</li>
+  <li>AI bisa <b>bias</b> jika data latihnya tidak seimbang.</li>
+</ul>
+
 <h3>Kesejahteraan Digital (Digital Well-being)</h3>
 <ul>
   <li>Batasi <i>screen time</i>, terutama menjelang tidur.</li>
   <li>Aturan <b>20-20-20</b>: setiap 20 menit, lihat benda sejauh ±20 kaki (6 meter) selama 20 detik.</li>
   <li>Posisi duduk ergonomis: layar sejajar mata, punggung tegak.</li>
   <li>Waspadai <b>FOMO</b> (fear of missing out) dan kecanduan gim/media sosial.</li>
+</ul>
+`
+    },
+    // ---------------------------------------------------------------
+    {
+      id: "software", topik: "software", ikon: "💾",
+      judul: "Perangkat Lunak, File & Representasi Data",
+      ringkas: "File dan ekstensi, kompresi, ASCII/Unicode, piksel dan warna RGB, suara digital, spreadsheet, serta shortcut keyboard.",
+      html: `
+<h3>File, Folder, dan Path</h3>
+<ul>
+  <li><b>File</b>: kumpulan data yang disimpan dengan nama tertentu. <b>Folder/direktori</b>: wadah untuk mengelompokkan file.</li>
+  <li><b>Path</b> (alamat lokasi file). Windows: <code>C:\\Users\\Ani\\Dokumen\\tugas.docx</code>. Linux/macOS: <code>/home/ani/Dokumen/tugas.docx</code>.</li>
+  <li><b>Ekstensi</b> adalah akhiran nama file setelah titik yang menunjukkan jenis file.</li>
+</ul>
+<table>
+<tr><th>Ekstensi</th><th>Jenis file</th></tr>
+<tr><td>.docx / .odt</td><td>Dokumen pengolah kata (Word / LibreOffice Writer)</td></tr>
+<tr><td>.xlsx / .csv</td><td>Lembar kerja (spreadsheet) / data tabel berpemisah koma</td></tr>
+<tr><td>.pptx</td><td>Presentasi</td></tr>
+<tr><td>.pdf</td><td>Dokumen siap cetak yang tampilannya sama di semua perangkat</td></tr>
+<tr><td>.txt</td><td>Teks polos tanpa format</td></tr>
+<tr><td>.jpg/.jpeg, .png, .gif, .svg</td><td>Gambar (.gif bisa animasi; .svg gambar vektor)</td></tr>
+<tr><td>.mp3, .wav</td><td>Audio</td></tr>
+<tr><td>.mp4, .mkv, .avi</td><td>Video</td></tr>
+<tr><td>.zip, .rar, .7z</td><td>Arsip terkompresi</td></tr>
+<tr><td>.exe / .apk</td><td>Program yang dapat dijalankan (Windows / Android). <b>Waspadai</b> jika dikirim orang tak dikenal.</td></tr>
+<tr><td>.html, .css, .js, .py</td><td>Kode halaman web dan program</td></tr>
+</table>
+
+<h3>Kompresi Data</h3>
+<table>
+<tr><th>Jenis</th><th>Cara kerja</th><th>Contoh</th></tr>
+<tr><td><b>Lossless</b></td><td>Ukuran mengecil <b>tanpa</b> kehilangan data; dapat dikembalikan persis seperti aslinya</td><td>ZIP, PNG, FLAC</td></tr>
+<tr><td><b>Lossy</b></td><td>Membuang sebagian data yang kurang terasa oleh mata/telinga; ukuran jauh lebih kecil, kualitas sedikit turun</td><td>JPEG, MP3, MP4</td></tr>
+</table>
+<p>Dokumen teks dan program harus dikompresi <b>lossless</b>, karena kehilangan satu karakter saja bisa merusak isinya.</p>
+
+<h3>Representasi Teks</h3>
+<ul>
+  <li><b>ASCII</b>: setiap karakter diberi kode angka. ASCII standar memakai <b>7 bit</b> sehingga ada <b>128</b> karakter.</li>
+  <li>Kode penting: <b>'A' = 65</b>, 'B' = 66, … 'Z' = 90; <b>'a' = 97</b>; <b>'0' = 48</b>; spasi = 32.</li>
+  <li>Selisih huruf besar dan kecil yang sama adalah <b>32</b> ('a' − 'A' = 97 − 65).</li>
+  <li><b>Unicode</b> (misalnya UTF-8) mencakup ratusan ribu karakter: huruf dari berbagai bahasa, aksara daerah, simbol, dan <b>emoji</b>.</li>
+</ul>
+
+<h3>Representasi Gambar</h3>
+<ul>
+  <li><b>Gambar bitmap/raster</b> tersusun dari titik-titik kecil bernama <b>piksel</b>. Jika diperbesar berlebihan, tampak pecah (pixelated). Contoh: JPG, PNG.</li>
+  <li><b>Gambar vektor</b> tersusun dari rumus garis dan bentuk, sehingga <b>tetap tajam saat diperbesar</b>. Cocok untuk logo. Contoh: SVG.</li>
+  <li><b>Kedalaman warna</b> (bit per piksel): 1 bit = 2 warna (hitam-putih), 8 bit = 256 warna, 24 bit = ±16,7 juta warna.</li>
+  <li><b>RGB</b>: warna layar disusun dari Merah, Hijau, Biru, masing-masing 0–255 (8 bit). (255, 0, 0) = merah; (0, 0, 0) = hitam; (255, 255, 255) = putih. Kode heksa: <code>#FF0000</code> = merah.</li>
+  <li><b>CMYK</b> (Cyan, Magenta, Yellow, Key/hitam) dipakai untuk <b>pencetakan</b>.</li>
+  <li>Ukuran gambar tanpa kompresi = lebar × tinggi × bit per piksel ÷ 8 (byte).</li>
+</ul>
+
+<h3>Representasi Suara dan Video</h3>
+<ul>
+  <li>Suara analog diubah menjadi digital dengan <b>sampling</b> (pengambilan contoh gelombang berkala).</li>
+  <li><b>Sampling rate</b> (Hz): banyak sampel per detik. CD audio memakai 44.100 Hz. Semakin tinggi, kualitas makin baik dan file makin besar.</li>
+  <li><b>Bit depth</b>: ketelitian tiap sampel (misalnya 16 bit).</li>
+  <li>Video adalah rangkaian gambar (<b>frame</b>). Kecepatannya diukur dalam <b>fps</b> (frame per second), misalnya 30 fps.</li>
+  <li>Alat pengubah analog → digital disebut <b>ADC</b>; digital → analog disebut <b>DAC</b>.</li>
+</ul>
+
+<h3>Aplikasi Perkantoran</h3>
+<p><b>Spreadsheet</b> (Microsoft Excel, Google Sheets, LibreOffice Calc):</p>
+<ul>
+  <li><b>Kolom</b> diberi nama huruf (A, B, C …), <b>baris</b> diberi nomor (1, 2, 3 …). Pertemuannya disebut <b>sel</b>, misalnya B3.</li>
+  <li>Rumus selalu diawali tanda <b>=</b>.</li>
+  <li><b>Range</b> A1:A5 berarti sel A1 sampai A5 (5 sel). B2:C4 berarti 2 kolom × 3 baris = 6 sel.</li>
+  <li>Fungsi: <code>SUM</code> (jumlah), <code>AVERAGE</code> (rata-rata), <code>MAX</code>, <code>MIN</code>, <code>COUNT</code> (banyak sel berisi angka), <code>IF</code> (logika). Contoh: <code>=IF(B2>=75;"Tuntas";"Remedial")</code>.</li>
+  <li><b>Alamat absolut</b> <code>$A$1</code> tidak berubah saat rumus disalin; <b>alamat relatif</b> <code>A1</code> ikut bergeser.</li>
+</ul>
+<p><b>Pengolah kata</b>: mengatur huruf, paragraf, tabel, margin, header-footer, dan <i>mail merge</i> (membuat banyak surat sekaligus dari satu data). <b>Presentasi</b>: slide, transisi (perpindahan antarslide), dan animasi (gerakan objek dalam slide).</p>
+
+<h3>Shortcut Keyboard Penting</h3>
+<table>
+<tr><th>Tombol</th><th>Fungsi</th><th>Tombol</th><th>Fungsi</th></tr>
+<tr><td>Ctrl + C</td><td>Salin</td><td>Ctrl + X</td><td>Potong</td></tr>
+<tr><td>Ctrl + V</td><td>Tempel</td><td>Ctrl + Z</td><td>Batalkan (undo)</td></tr>
+<tr><td>Ctrl + Y</td><td>Ulangi (redo)</td><td>Ctrl + S</td><td>Simpan</td></tr>
+<tr><td>Ctrl + A</td><td>Pilih semua</td><td>Ctrl + F</td><td>Cari</td></tr>
+<tr><td>Ctrl + P</td><td>Cetak</td><td>Ctrl + B / I / U</td><td>Tebal / miring / garis bawah</td></tr>
+<tr><td>Alt + Tab</td><td>Berpindah jendela</td><td>Alt + F4</td><td>Menutup jendela aktif</td></tr>
+<tr><td>Windows + L</td><td>Mengunci layar</td><td>Windows + D</td><td>Menampilkan desktop</td></tr>
+<tr><td>Ctrl + Shift + Esc</td><td>Membuka Task Manager</td><td>F2</td><td>Mengganti nama file</td></tr>
+<tr><td>F5</td><td>Memuat ulang (refresh)</td><td>Windows + E</td><td>Membuka File Explorer</td></tr>
+</table>
+
+<h3>Sistem File</h3>
+<ul>
+  <li><b>FAT32</b>: sangat kompatibel, tetapi ukuran satu file <b>maksimal 4 GB</b>.</li>
+  <li><b>exFAT</b>: untuk flashdisk/kartu memori, mendukung file besar.</li>
+  <li><b>NTFS</b>: sistem file utama Windows.</li>
+  <li><b>ext4</b>: Linux. <b>APFS</b>: macOS.</li>
+  <li><b>Format</b> media akan <b>menghapus</b> seluruh isinya.</li>
+</ul>
+`
+    },
+    // ---------------------------------------------------------------
+    {
+      id: "terkini", topik: "terkini", ikon: "🚀",
+      judul: "Teknologi Terkini: Cloud, IoT, AI & Big Data",
+      ringkas: "Komputasi awan (SaaS/PaaS/IaaS), Internet of Things, kecerdasan artifisial dan machine learning, big data, AR/VR, dan layanan digital.",
+      html: `
+<h3>Komputasi Awan (Cloud Computing)</h3>
+<p>Memakai sumber daya komputasi (penyimpanan, server, aplikasi) <b>melalui internet</b> tanpa harus memiliki perangkatnya sendiri. Biasanya dibayar sesuai pemakaian.</p>
+<table>
+<tr><th>Model layanan</th><th>Yang disediakan</th><th>Contoh</th></tr>
+<tr><td><b>SaaS</b> (Software as a Service)</td><td>Aplikasi siap pakai lewat peramban</td><td>Gmail, Google Docs, Canva, Zoom</td></tr>
+<tr><td><b>PaaS</b> (Platform as a Service)</td><td>Platform untuk membuat dan menjalankan aplikasi</td><td>Google App Engine, Heroku</td></tr>
+<tr><td><b>IaaS</b> (Infrastructure as a Service)</td><td>Infrastruktur: server virtual, penyimpanan, jaringan</td><td>Amazon EC2, Google Compute Engine</td></tr>
+</table>
+<p>Model penerapan: <b>public cloud</b> (dipakai banyak pelanggan), <b>private cloud</b> (khusus satu organisasi), <b>hybrid cloud</b> (gabungan).</p>
+<p>Kelebihan: dapat diakses dari mana saja, mudah berkolaborasi, tidak perlu membeli server. Kekurangan: butuh internet dan bergantung pada keamanan penyedia.</p>
+
+<h3>Internet of Things (IoT)</h3>
+<p>Benda sehari-hari yang dilengkapi <b>sensor</b>, <b>pemroses</b> (mikrokontroler), dan <b>koneksi internet</b> sehingga dapat mengirim data dan dikendalikan dari jauh.</p>
+<ul>
+  <li><b>Sensor</b> = alat input yang mengukur lingkungan (suhu, cahaya, gerak, kelembapan tanah).</li>
+  <li><b>Aktuator</b> = alat output yang melakukan aksi (motor, pompa air, lampu, buzzer).</li>
+  <li>Contoh: lampu pintar, penyiram tanaman otomatis, smartwatch, CCTV daring, tempat sampah pintar.</li>
+  <li>Papan mikrokontroler populer untuk belajar: Arduino, ESP32, micro:bit.</li>
+  <li>Risiko: perangkat IoT dengan password bawaan (default) mudah diretas.</li>
+</ul>
+
+<h3>Kecerdasan Artifisial (AI)</h3>
+<p><b>AI</b> adalah kemampuan mesin meniru kecerdasan manusia: mengenali gambar, memahami bahasa, dan membuat keputusan.</p>
+<ul>
+  <li><b>Machine Learning (ML)</b>: mesin <b>belajar dari data</b>, bukan diprogram aturan satu per satu.
+    <ul>
+      <li><b>Supervised learning</b>: belajar dari data berlabel (foto sudah diberi label "kucing"/"anjing").</li>
+      <li><b>Unsupervised learning</b>: mencari kelompok/pola sendiri dari data tanpa label (misalnya mengelompokkan pelanggan).</li>
+      <li><b>Reinforcement learning</b>: belajar dari <b>hadiah dan hukuman</b> hasil coba-coba (misalnya AI bermain gim).</li>
+    </ul></li>
+  <li>Data dibagi menjadi <b>data latih</b> (untuk belajar) dan <b>data uji</b> (untuk mengukur ketepatan).</li>
+  <li><b>Deep learning</b>: ML memakai jaringan saraf tiruan berlapis-lapis.</li>
+  <li><b>Computer vision</b>: AI memahami gambar/video (pengenalan wajah, deteksi sampah).</li>
+  <li><b>NLP</b> (Natural Language Processing): AI memahami bahasa manusia (penerjemah, chatbot, asisten suara).</li>
+  <li><b>AI generatif</b>: membuat konten baru (teks, gambar, musik) dari perintah (<i>prompt</i>).</li>
+  <li>Keterbatasan: bisa salah (halusinasi), bias jika datanya tidak seimbang, dan butuh banyak data serta energi.</li>
+</ul>
+
+<h3>Big Data dan Analisis Data</h3>
+<p><b>Big data</b> adalah kumpulan data yang sangat besar dan kompleks. Cirinya dikenal sebagai <b>3V</b>:</p>
+<ul>
+  <li><b>Volume</b>: jumlahnya sangat besar.</li>
+  <li><b>Velocity</b>: dihasilkan dan harus diproses dengan sangat cepat.</li>
+  <li><b>Variety</b>: beragam bentuk (teks, gambar, video, data sensor).</li>
+</ul>
+<p>Sering ditambah <b>Veracity</b> (keakuratan) dan <b>Value</b> (nilai guna).</p>
+<p>Jenis data: <b>terstruktur</b> (tabel, spreadsheet, basis data), <b>tidak terstruktur</b> (foto, video, unggahan media sosial), dan <b>semi-terstruktur</b> (JSON, XML).</p>
+<p>Tahapan analisis data: kumpulkan → bersihkan (hapus duplikat/data salah) → olah dan analisis → <b>visualisasi</b> (grafik) → simpulkan.</p>
+<p>Basis data menyimpan data dalam tabel. Setiap baris disebut <b>record</b>, setiap kolom disebut <b>field</b>. <b>Primary key</b> adalah field yang nilainya unik untuk setiap record (misalnya NIS).</p>
+
+<h3>Teknologi Lain</h3>
+<ul>
+  <li><b>VR</b> (Virtual Reality): pengguna masuk ke dunia <b>sepenuhnya virtual</b> memakai headset.</li>
+  <li><b>AR</b> (Augmented Reality): objek virtual <b>ditambahkan ke dunia nyata</b> melalui kamera (filter wajah, gim berburu monster di peta nyata).</li>
+  <li><b>Blockchain</b>: catatan transaksi tersebar di banyak komputer yang sulit diubah. Dasar mata uang kripto.</li>
+  <li><b>Edge computing</b>: data diolah di dekat sumbernya (di perangkat), bukan dikirim semua ke cloud, sehingga lebih cepat.</li>
+  <li><b>Komputasi kuantum</b>: memakai <b>qubit</b> yang dapat bernilai 0 dan 1 sekaligus (superposisi).</li>
+  <li><b>Robotika dan otomasi</b>: robot industri, drone, kendaraan otonom.</li>
+</ul>
+
+<h3>Layanan Digital di Sekitar Kita</h3>
+<ul>
+  <li><b>E-commerce</b>: jual beli daring (marketplace).</li>
+  <li><b>Fintech</b>: layanan keuangan berbasis teknologi (dompet digital). <b>QRIS</b> (Quick Response Code Indonesian Standard) adalah standar kode QR pembayaran nasional dari Bank Indonesia.</li>
+  <li><b>E-government</b>: layanan pemerintahan daring (pembuatan dokumen, pajak, perizinan).</li>
+  <li><b>E-learning/LMS</b>: pembelajaran daring (Google Classroom, Moodle).</li>
 </ul>
 `
     },
@@ -846,6 +1184,18 @@ banding 8,1 → tukar → [3, 5, 1, 8]   ← hasil pass 1</pre>
 
 <h3>6. Sandi Caesar</h3>
 <p>Tulis alfabet, lalu geser. Geser 3: A→D, B→E, …, X→A, Y→B, Z→C. Kata <b>SIBER</b> → <b>VLEHU</b>.</p>
+
+<h3>7. Konversi Biner ↔ Desimal</h3>
+<p>Pakai nilai tempat 128, 64, 32, 16, 8, 4, 2, 1. Contoh: 1011₂ = 8 + 2 + 1 = <b>11</b>; 45 = 32 + 8 + 4 + 1 = <b>101101₂</b>. Oktet IP 192 = <b>11000000₂</b>.</p>
+
+<h3>8. Kode ASCII</h3>
+<p>Ingat tiga patokan: <b>'A' = 65</b>, <b>'a' = 97</b>, <b>'0' = 48</b>. Huruf ke-<i>n</i> (A = 1) memiliki kode 64 + <i>n</i>. Contoh 'E' (huruf ke-5) = 69, 'e' = 69 + 32 = 101.</p>
+
+<h3>9. Kombinasi Password</h3>
+<p>Kombinasi = (jenis karakter)<sup>panjang</sup>. PIN 4 digit = 10⁴ = 10.000. Huruf kecil 2 karakter = 26² = 676.</p>
+
+<h3>10. Range Spreadsheet</h3>
+<p>Banyak sel pada range = (banyak kolom) × (banyak baris). B2:D5 → kolom B, C, D (3) × baris 2–5 (4) = <b>12 sel</b>.</p>
 `
     }
   ]

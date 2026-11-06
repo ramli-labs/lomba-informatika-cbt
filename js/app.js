@@ -19,8 +19,8 @@ const store = {
   del(k) { try { localStorage.removeItem("lpi-" + k); } catch {} }
 };
 
-let kat = store.get("kat", "k1");
-if (!INFO_KAT[kat]) kat = "k1";
+let kat = store.get("kat", "k2");
+if (!INFO_KAT[kat]) kat = "k2";
 
 // ---------- util ----------
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -57,6 +57,19 @@ function ambilSoal(n, topik, porsiGen) {
     if (s && !sudah.has(s.q) && new Set(s.o).size === s.o.length) { sudah.add(s.q); hasil.push(s); }
   }
   return acak(hasil).map(siapkan);
+}
+
+// ---------- catatan soal yang pernah salah (khusus soal bank) ----------
+const salahSet = () => new Set(store.get("salah-" + kat, []));
+function catatJawaban(s, benar) {
+  if (!BANK[kat].some(b => b.q === s.q)) return; // soal acak tidak dicatat
+  const set = salahSet();
+  if (benar) set.delete(s.q); else set.add(s.q);
+  store.set("salah-" + kat, [...set]);
+}
+function soalPernahSalah() {
+  const set = salahSet();
+  return acak(BANK[kat].filter(b => set.has(b.q))).map(siapkan);
 }
 
 // ---------- modal konfirmasi ----------
@@ -108,7 +121,7 @@ function halBeranda() {
   const nMateri = MATERI[kat].length, nBaca = MATERI[kat].filter(m => dibaca[m.id]).length;
   const subtopik = kat === "k1"
     ? "Dekomposisi, pengenalan pola, abstraksi, algoritma, logika proposisi, sistem bilangan, struktur data, dan soal cerita gaya Bebras."
-    : "Sistem komputer, jaringan, keamanan data, sejarah TIK, dan etika siber, ditambah hitungan cepat (satuan data, waktu unduh, IP).";
+    : "Sistem komputer, jaringan, keamanan data, sejarah TIK, etika siber, perangkat lunak & representasi data, teknologi terkini (cloud, IoT, AI), dan hitungan cepat.";
   view.innerHTML = `
   <section class="hero">
     <div class="card">
@@ -202,38 +215,63 @@ function halMateriIsi(id) {
 // LATIHAN PER TOPIK (drilling dengan pembahasan langsung)
 // =====================================================================
 let latihan = null;
-const pilihanLatihan = { topik: "", n: 10 };
+const pilihanLatihan = { topik: "", n: 20 };
+const simpanLat = () => { if (latihan) store.set("lat-" + latihan.kat, latihan); };
+const hapusLat = () => store.del("lat-" + kat);
 
 function halLatihan() {
   if (latihan && latihan.kat === kat) return tampilLatihan();
+  const tersimpan = store.get("lat-" + kat, null);
+  const adaSimpan = tersimpan && tersimpan.kat === kat && tersimpan.i < tersimpan.soal.length;
+  const nSalah = salahSet().size;
   const topik = TOPIK[kat];
   if (pilihanLatihan.topik && !topik[pilihanLatihan.topik]) pilihanLatihan.topik = "";
   const jml = t => BANK[kat].filter(s => !t || s.t === t).length;
   const punyaGen = t => GEN[kat].some(g => !t || g.t === t);
   view.innerHTML = `
   <h1>🎯 Latihan per Topik</h1>
+  ${adaSimpan ? `<div class="card row" style="margin-bottom:14px;border-color:var(--gold)">
+    <span>⏸️ <b>Latihan tersimpan</b><br><small>${esc(tersimpan.mode === "salah" ? "Soal yang pernah salah" : tersimpan.topik ? namaTopik(tersimpan.topik) : "Campuran")} · soal ${tersimpan.i + 1} dari ${tersimpan.soal.length}</small></span>
+    <span class="sp"></span>
+    <button class="btn ghost sm" id="hapus-simpan">Hapus</button>
+    <button class="btn" id="lanjut-simpan">Lanjutkan →</button></div>` : ""}
   <p style="color:var(--mut)">Setiap jawaban langsung dinilai dan diberi pembahasan. Topik bertanda <span class="chip">∞ acak</span> memiliki soal hitungan yang dibuat ulang setiap kali.</p>
   <div class="grid g2" style="margin-bottom:16px">
     <button class="tpk ${pilihanLatihan.topik === "" ? "on" : ""}" data-t="">🔀 <span><b>Campuran semua topik</b><small>${jml("")} soal bank + soal acak</small></span></button>
     ${Object.entries(topik).map(([k, v]) => `
       <button class="tpk ${pilihanLatihan.topik === k ? "on" : ""}" data-t="${k}">
         ${(MATERI[kat].find(m => m.topik === k) || {}).ikon || "📝"}
-        <span><b>${esc(v)}</b><small>${jml(k)} soal bank ${punyaGen(k) ? '· <span class="chip">∞ acak</span>' : ""}</small></span>
+        <span><b>${esc(v)}</b><small>${jml(k) ? jml(k) + " soal bank" : "khusus soal hitungan"} ${punyaGen(k) ? '· <span class="chip">∞ acak</span>' : ""}</small></span>
       </button>`).join("")}
   </div>
   <div class="card row">
     <b>Jumlah soal:</b>
-    <div class="seg" id="seg-n">${[10, 20, 30].map(n => `<button data-n="${n}" class="${pilihanLatihan.n === n ? "on" : ""}">${n}</button>`).join("")}</div>
+    <div class="seg" id="seg-n">${[10, 20, 50, 100, 200].map(n => `<button data-n="${n}" class="${pilihanLatihan.n === n ? "on" : ""}">${n}</button>`).join("")}</div>
     <span class="sp"></span>
     <button class="btn" id="mulai-lat">Mulai latihan →</button>
-  </div>`;
+  </div>
+  <div class="card row" style="margin-top:12px">
+    <span>🔁 <b>Soal yang pernah salah</b><br><small>${nSalah ? `${nSalah} soal bank yang pernah dijawab salah. Soal hilang dari daftar ini setelah dijawab benar.` : "Belum ada. Soal bank yang kamu jawab salah akan terkumpul di sini."}</small></span>
+    <span class="sp"></span>
+    <button class="btn ghost" id="mulai-salah" ${nSalah ? "" : "disabled"}>Latih ulang (${nSalah})</button>
+  </div>
+  <p style="margin-top:10px"><small>💡 Latihan panjang (50–200 soal) tersimpan otomatis. Kamu bisa menutup halaman dan melanjutkannya nanti.</small></p>`;
   view.querySelectorAll(".tpk").forEach(b => b.onclick = () => { pilihanLatihan.topik = b.dataset.t; halLatihan(); });
   view.querySelectorAll("#seg-n button").forEach(b => b.onclick = () => { pilihanLatihan.n = +b.dataset.n; halLatihan(); });
   $("#mulai-lat").onclick = () => {
-    const soal = ambilSoal(pilihanLatihan.n, pilihanLatihan.topik, 0.4);
+    const soal = ambilSoal(pilihanLatihan.n, pilihanLatihan.topik, pilihanLatihan.n >= 100 ? 0.2 : 0.4);
     if (!soal.length) return;
     latihan = { kat, topik: pilihanLatihan.topik, soal, i: 0, jawab: soal.map(() => null) };
-    tampilLatihan();
+    simpanLat(); tampilLatihan();
+  };
+  if (adaSimpan) {
+    $("#lanjut-simpan").onclick = () => { latihan = tersimpan; tampilLatihan(); };
+    $("#hapus-simpan").onclick = async () => { if (await konfirmasi("<h3>Hapus latihan tersimpan?</h3>", "Hapus")) { hapusLat(); halLatihan(); } };
+  }
+  $("#mulai-salah").onclick = () => {
+    const soal = soalPernahSalah(); if (!soal.length) return;
+    latihan = { kat, topik: "", mode: "salah", soal, i: 0, jawab: soal.map(() => null) };
+    simpanLat(); tampilLatihan();
   };
 }
 
@@ -245,13 +283,13 @@ function tampilLatihan() {
   view.innerHTML = `
   <div class="soal-box">
     <div class="row" style="margin-bottom:10px">
-      <button class="btn ghost sm" id="keluar">← Keluar</button>
+      <button class="btn ghost sm" id="keluar">← Keluar (progres tersimpan)</button>
       <span class="sp"></span>
       <span class="chip">✅ ${benarSejauh} benar</span>
     </div>
     <div class="bar" style="margin-bottom:14px"><i style="width:${L.i / L.soal.length * 100}%"></i></div>
     <div class="card">
-      <div class="q-head"><span class="chip">Soal ${L.i + 1} / ${L.soal.length}</span><span class="chip">${esc(namaTopik(s.t))}</span></div>
+      <div class="q-head"><span class="chip">Soal ${L.i + 1} / ${L.soal.length}</span>${L.mode === "salah" ? '<span class="chip">🔁 Pernah salah</span>' : ""}<span class="chip">${esc(namaTopik(s.t))}</span></div>
       <p class="q-teks">${teksSoal(s.q)}</p>
       <div class="opsi">${s.opsi.map((o, k) => {
         let c = "";
@@ -266,24 +304,30 @@ function tampilLatihan() {
       <div class="row" style="margin-top:14px"><span class="sp"></span><button class="btn" id="lanjut">${L.i + 1 < L.soal.length ? "Soal berikutnya →" : "Lihat hasil"}</button></div>` : `<p style="margin:12px 0 0"><small>Tekan <span class="kbd">A</span>–<span class="kbd">D</span> atau klik jawaban.</small></p>`}
     </div>
   </div>`;
-  $("#keluar").onclick = async () => { if (await konfirmasi("<h3>Keluar dari latihan?</h3><p>Progres latihan ini tidak disimpan.</p>", "Keluar")) { latihan = null; halLatihan(); } };
+  $("#keluar").onclick = () => { simpanLat(); latihan = null; halLatihan(); };
   view.querySelectorAll(".opsi button").forEach(b => b.onclick = () => jawabLatihan(+b.dataset.k));
-  const l = $("#lanjut"); if (l) { l.onclick = () => { L.i++; tampilLatihan(); window.scrollTo(0, 0); }; l.focus(); }
+  const l = $("#lanjut"); if (l) { l.onclick = () => { L.i++; simpanLat(); tampilLatihan(); window.scrollTo(0, 0); }; l.focus(); }
 }
-function jawabLatihan(k) { if (latihan.jawab[latihan.i] !== null) return; latihan.jawab[latihan.i] = k; tampilLatihan(); }
+function jawabLatihan(k) {
+  if (latihan.jawab[latihan.i] !== null) return;
+  latihan.jawab[latihan.i] = k;
+  const s = latihan.soal[latihan.i]; catatJawaban(s, k === s.kunci);
+  simpanLat(); tampilLatihan();
+}
 
 function hasilLatihan() {
   const L = latihan;
   const benar = L.jawab.filter((x, k) => x === L.soal[k].kunci).length;
   const nilai = Math.round(benar / L.soal.length * 100);
   const salah = L.soal.map((s, k) => ({ s, j: L.jawab[k] })).filter(x => x.j !== x.s.kunci);
+  hapusLat();
   const rl = store.get("latihan-log", []);
   rl.push({ kat, topik: L.topik, n: L.soal.length, benar, tgl: Date.now() }); store.set("latihan-log", rl.slice(-200));
   view.innerHTML = `
   <div class="soal-box">
     <div class="card" style="text-align:center">
       <div class="skor ${nilai >= 75 ? "" : ""}" style="color:${nilai >= 75 ? "var(--ok)" : nilai >= 50 ? "var(--gold)" : "var(--bad)"}">${nilai}</div>
-      <p>${benar} benar dari ${L.soal.length} soal · ${esc(L.topik ? namaTopik(L.topik) : "Campuran")}</p>
+      <p>${benar} benar dari ${L.soal.length} soal · ${esc(L.mode === "salah" ? "Soal yang pernah salah" : L.topik ? namaTopik(L.topik) : "Campuran")}</p>
       <p style="color:var(--mut)">${nilai >= 85 ? "Luar biasa! Coba simulasi penuh." : nilai >= 70 ? "Bagus! Pelajari pembahasan soal yang salah, lalu ulangi." : "Baca ulang materinya, lalu ulangi latihan ini."}</p>
       <div class="row" style="justify-content:center">
         <button class="btn" id="ulang">🔁 Ulangi (soal baru)</button>
@@ -292,7 +336,11 @@ function hasilLatihan() {
     </div>
     ${salah.length ? `<h2 style="margin-top:20px">Soal yang perlu dipelajari lagi (${salah.length})</h2>` + salah.map(({ s, j }) => kartuReview(s, j)).join("") : ""}
   </div>`;
-  $("#ulang").onclick = () => { const soal = ambilSoal(L.soal.length, L.topik, 0.4); latihan = { kat, topik: L.topik, soal, i: 0, jawab: soal.map(() => null) }; tampilLatihan(); };
+  $("#ulang").onclick = () => {
+    const soal = L.mode === "salah" ? soalPernahSalah() : ambilSoal(L.soal.length, L.topik, L.soal.length >= 100 ? 0.2 : 0.4);
+    if (!soal.length) { latihan = null; return halLatihan(); }
+    latihan = { kat, topik: L.topik, mode: L.mode, soal, i: 0, jawab: soal.map(() => null) }; simpanLat(); tampilLatihan();
+  };
   $("#ganti").onclick = () => { latihan = null; halLatihan(); };
 }
 
@@ -425,6 +473,7 @@ function kumpulkan(waktuHabis) {
   const S = simAktif; if (!S || S.selesai) return;
   berhentiTimer();
   S.selesai = true; S.selesaiPada = Math.min(Date.now(), S.akhir);
+  S.soal.forEach((s, k) => { if (S.jawab[k] !== null) catatJawaban(s, S.jawab[k] === s.kunci); });
   const benar = S.jawab.filter((x, k) => x === S.soal[k].kunci).length;
   const perTopik = {};
   S.soal.forEach((s, k) => { const p = perTopik[s.t] || (perTopik[s.t] = { n: 0, b: 0 }); p.n++; if (S.jawab[k] === s.kunci) p.b++; });

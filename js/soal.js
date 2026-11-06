@@ -19,6 +19,8 @@ const TOPIK = {
     keamanan: "Keamanan Data",
     sejarah: "Sejarah TIK",
     etika: "Etika Siber",
+    software: "Perangkat Lunak & Data",
+    terkini: "Teknologi Terkini",
     hitung: "Hitungan Cepat TIK"
   }
 };
